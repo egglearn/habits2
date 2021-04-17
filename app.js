@@ -52,3 +52,30 @@ function googleSignout() {
 
 SignIn.addEventListener("click", googleSignin);
 SignOut.addEventListener("click", googleSignout);
+//
+
+var habitsRef = firebase.database().ref("habits");
+
+function writeUserData(e) {
+  e.preventDefault();
+
+  playersRef.push({
+    habit: data,
+    completed: "hockey",
+  });
+}
+
+function reader() {
+  habitsRef.on("value", function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      let datas = childSnapshot.val().name;
+      const test = document.createElement("div");
+      test.textContent = datas;
+      container.appendChild(test);
+    });
+  });
+}
+
+let showHabit = document.getElementById("showHabit");
+
+showHabit.addEventListener("click", reader);
