@@ -9,50 +9,54 @@ var firebaseConfig = {
   appId: "1:588630235509:web:213a6b2c7b47612662db3c",
 };
 
-const SignIn = document.getElementById("SignIn");
-const SignOut = document.getElementById("SignOut");
+const signIn = document.getElementById("SignIn");
+const signOut = document.getElementById("SignOut");
 
 var provider = new firebase.auth.GoogleAuthProvider();
 firebase.initializeApp(firebaseConfig);
 
-function googleSignin() {
+function googleSignIn() {
+  var provider = new firebase.auth.GoogleAuthProvider();
   firebase
     .auth()
-
     .signInWithPopup(provider)
     .then(function (result) {
+      console.log("i ran");
+      // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
+      // The signed-in user info.
       var user = result.user;
-
-      console.log(token);
-      console.log(user);
+      // ...
     })
     .catch(function (error) {
+      // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-
-      console.log(error.code);
-      console.log(error.message);
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
     });
 }
 
-function googleSignout() {
+function goolgeSignOut() {
+  // [START auth_sign_out]
   firebase
     .auth()
     .signOut()
-
-    .then(
-      function () {
-        console.log("Signout Succesfull");
-      },
-      function (error) {
-        console.log("Signout Failed");
-      }
-    );
+    .then(() => {
+      // Sign-out successful.
+      console.log("sign out successful");
+    })
+    .catch((error) => {
+      // An error happened.
+    });
+  // [END auth_sign_out]
 }
 
-SignIn.addEventListener("click", googleSignin);
-SignOut.addEventListener("click", googleSignout);
+signIn.addEventListener("click", googleSignIn);
+signOut.addEventListener("click", googleSignOut);
 //
 
 var habitsRef = firebase.database().ref("habits");
