@@ -14,7 +14,7 @@ const signOut = document.getElementById("signOut");
 
 let showHabit = document.getElementById("showHabit");
 let writer = document.getElementById("habitInput");
-let addHabit = documetn.getElementById("addHabit");
+let addHabit = document.getElementById("addHabit");
 
 var provider = new firebase.auth.GoogleAuthProvider();
 firebase.initializeApp(firebaseConfig);
