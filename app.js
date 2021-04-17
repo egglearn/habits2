@@ -9,8 +9,8 @@ var firebaseConfig = {
   appId: "1:588630235509:web:213a6b2c7b47612662db3c",
 };
 
-const signIn = document.getElementById("SignIn");
-const signOut = document.getElementById("SignOut");
+const signIn = document.getElementById("signIn");
+const signOut = document.getElementById("signOut");
 
 var provider = new firebase.auth.GoogleAuthProvider();
 firebase.initializeApp(firebaseConfig);
