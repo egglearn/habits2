@@ -13,6 +13,7 @@ const SignIn = document.getElementById("SignIn");
 const SignOut = document.getElementById("SignOut");
 
 var provider = new firebase.auth.GoogleAuthProvider();
+firebase.initializeApp(firebaseConfig);
 
 function googleSignin() {
   firebase
