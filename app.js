@@ -65,6 +65,8 @@ signOut.addEventListener("click", googleSignOut);
 
 var habitsRef = firebase.database().ref("habits");
 
+let container = document.getElementById("container");
+
 function writeUserData(e) {
   e.preventDefault();
   let data = habitInput.value;
@@ -73,15 +75,21 @@ function writeUserData(e) {
     habit: data,
     completed: 1,
   });
+
+  const addDiv = document.createElement("div");
+  addDiv.textContent = data;
+  container.appendChild(addDiv);
 }
 
 function reader() {
   habitsRef.on("value", function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
-      let datas = childSnapshot.val().name;
-      const test = document.createElement("div");
-      test.textContent = datas;
-      container.appendChild(test);
+      let datas = childSnapshot.val().habit;
+      console.log(datas);
+
+      //   const test = document.createElement("div");
+      //   test.textContent = datas;
+      //   container.appendChild(test);
     });
   });
 }
