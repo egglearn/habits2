@@ -69,7 +69,7 @@ function writeUserData(e) {
   e.preventDefault();
   let data = habitInput.value;
 
-  playersRef.push({
+  habitsRef.push({
     habit: data,
     completed: 1,
   });
