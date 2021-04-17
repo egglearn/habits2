@@ -8,3 +8,47 @@ var firebaseConfig = {
   messagingSenderId: "588630235509",
   appId: "1:588630235509:web:213a6b2c7b47612662db3c",
 };
+
+const SignIn = document.getElementById("SignIn");
+const SignOut = document.getElementById("SignOut");
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+function googleSignin() {
+  firebase
+    .auth()
+
+    .signInWithPopup(provider)
+    .then(function (result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+
+      console.log(token);
+      console.log(user);
+    })
+    .catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      console.log(error.code);
+      console.log(error.message);
+    });
+}
+
+function googleSignout() {
+  firebase
+    .auth()
+    .signOut()
+
+    .then(
+      function () {
+        console.log("Signout Succesfull");
+      },
+      function (error) {
+        console.log("Signout Failed");
+      }
+    );
+}
+
+SignIn.addEventListener("click", googleSignin);
+SignOut.addEventListener("click", googleSignout);
