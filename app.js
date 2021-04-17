@@ -12,6 +12,9 @@ var firebaseConfig = {
 const signIn = document.getElementById("signIn");
 const signOut = document.getElementById("signOut");
 
+let showHabit = document.getElementById("showHabit");
+let writer = document.getElementById("habitInput");
+
 var provider = new firebase.auth.GoogleAuthProvider();
 firebase.initializeApp(firebaseConfig);
 
@@ -40,7 +43,7 @@ function googleSignIn() {
     });
 }
 
-function goolgeSignOut() {
+function googleSignOut() {
   // [START auth_sign_out]
   firebase
     .auth()
@@ -63,10 +66,11 @@ var habitsRef = firebase.database().ref("habits");
 
 function writeUserData(e) {
   e.preventDefault();
+  let data = habitInput.value;
 
   playersRef.push({
     habit: data,
-    completed: "hockey",
+    completed: 1,
   });
 }
 
@@ -80,7 +84,5 @@ function reader() {
     });
   });
 }
-
-let showHabit = document.getElementById("showHabit");
 
 showHabit.addEventListener("click", reader);
