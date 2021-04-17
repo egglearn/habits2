@@ -14,6 +14,7 @@ const signOut = document.getElementById("signOut");
 
 let showHabit = document.getElementById("showHabit");
 let writer = document.getElementById("habitInput");
+let addHabit = documetn.getElementById("addHabit");
 
 var provider = new firebase.auth.GoogleAuthProvider();
 firebase.initializeApp(firebaseConfig);
@@ -86,3 +87,5 @@ function reader() {
 }
 
 showHabit.addEventListener("click", reader);
+
+addHabit.addEventListener("click", writeUserData);
