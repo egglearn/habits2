@@ -16,7 +16,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 firebase.initializeApp(firebaseConfig);
 
 function googleSignIn() {
-  var provider = new firebase.auth.GoogleAuthProvider();
+  //var provider = new firebase.auth.GoogleAuthProvider();
   firebase
     .auth()
     .signInWithPopup(provider)
